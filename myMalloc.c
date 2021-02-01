@@ -233,7 +233,7 @@ static size_t roundSize(size_t raw_size) {
     rounded_raw_size = raw_size;
   }
 
-  //mkae rounded raw size minimum 16 bytes
+  //make rounded raw size minimum 16 bytes
   if(rounded_raw_size < 16) {
     rounded_raw_size = 16;
   }
