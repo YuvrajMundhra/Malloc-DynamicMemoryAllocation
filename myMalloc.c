@@ -200,12 +200,17 @@ static header * allocate_chunk(size_t size) {
  * @return A block satisfying the user's request
  */
 static inline header * allocate_object(size_t raw_size) {
-  
+  //raw_size = 0, return NULL
+  if(raw_size == 0) {
+    return NULL;
+  }
   //calling function to round size to multiple of 8
   size_t rounded_raw_size = roundSize(raw_size);
 
   //calculate actual size = metadata + rounded_size
   size_t actual_size = sizeof(header) + rounded_raw_size;
+
+  
   (void) raw_size;
   assert(false);
   exit(1);
@@ -227,6 +232,11 @@ static size_t roundSize(size_t raw_size) {
   } else {
     rounded_raw_size = raw_size;
   }
+
+  //mkae rounded raw size minimum 16 bytes
+  if(rounded_raw_size < 16) {
+    rounded_raw_size = 16;
+  }
   return rounded_raw_size;
 }
 
@@ -245,6 +255,16 @@ static inline header * ptr_to_header(void * p) {
  * @brief Helper to manage deallocation of a pointer returned by the user
  *
  * @param p The pointer returned to the user by a call to malloc
+ */
+static inline void deallocate_object(void * p) {
+  // TODO implement deallocation
+  (void) p;
+  assert(false);
+  exit(1);
+}
+
+/**
+ * @brief Helper to detect cycles in the free list
  */
 static inline void deallocate_object(void * p) {
   // TODO implement deallocation
@@ -374,16 +394,6 @@ static void init() {
   // Allocate the first chunk from the OS
   header * block = allocate_chunk(ARENA_SIZE);
 
-  header * prevFencePost = get_header_from_offset(block, -ALLOC_HEADER_SIZE);
-  insert_os_chunk(prevFencePost);
-
-  lastFencePost = get_header_from_offset(block, get_size(block));
-
-  // Set the base pointer to the beginning of the first fencepost in the first
-  // chunk from the OS
-  base = ((char *) block) - ALLOC_HEADER_SIZE; //sizeof(header);
-
-  // Initialize freelist sentinels
   for (int i = 0; i < N_LISTS; i++) {
     header * freelist = &freelistSentinels[i];
     freelist->next = freelist;
