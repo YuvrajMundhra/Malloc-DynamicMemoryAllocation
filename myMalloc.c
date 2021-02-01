@@ -87,6 +87,11 @@ static void init();
 
 static bool isMallocInitialized;
 
+
+// My helper function declarations
+//
+// Calculate rounded raw size
+static size_t roundSize(size_t);
 /**
  * @brief Helper function to retrieve a header pointer from a pointer and an 
  *        offset
@@ -215,11 +220,12 @@ static inline header * allocate_object(size_t raw_size) {
  * @return raw_size rounded to multiple of 8
  */
 static size_t roundSize(size_t raw_size) {
+  size_t rounded_raw_size;
   if(raw_size % 8 != 0) {
     size_t modulo_raw_size = raw_size % 8;
-    size_t rounded_raw_size = raw_size + (8 - modulo_raw_size);
+    rounded_raw_size = raw_size + (8 - modulo_raw_size);
   } else {
-    size_t rounded_raw_size = raw_size;
+    rounded_raw_size = raw_size;
   }
   return rounded_raw_size;
 }
