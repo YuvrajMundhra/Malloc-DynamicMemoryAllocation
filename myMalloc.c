@@ -195,10 +195,33 @@ static header * allocate_chunk(size_t size) {
  * @return A block satisfying the user's request
  */
 static inline header * allocate_object(size_t raw_size) {
-  // TODO implement allocation
+  
+  //calling function to round size to multiple of 8
+  size_t rounded_raw_size = roundSize(raw_size);
+
+  //calculate actual size = metadata + rounded_size
+  size_t actual_size = sizeof(header) + rounded_raw_size;
   (void) raw_size;
   assert(false);
   exit(1);
+}
+
+
+/**
+ * @brief Helper function round the raw_size to multiple of 8
+ * 
+ * @param raw_size number of bytes the user needs
+ *
+ * @return raw_size rounded to multiple of 8
+ */
+static size_t roundSize(size_t raw_size) {
+  if(raw_size % 8 != 0) {
+    size_t modulo_raw_size = raw_size % 8;
+    size_t rounded_raw_size = raw_size + (8 - modulo_raw_size);
+  } else {
+    size_t rounded_raw_size = raw_size;
+  }
+  return rounded_raw_size;
 }
 
 /**
