@@ -87,6 +87,11 @@ static void init();
 
 static bool isMallocInitialized;
 
+
+// My helper function declarations
+//
+// Calculate rounded raw size
+static size_t roundSize(size_t);
 /**
  * @brief Helper function to retrieve a header pointer from a pointer and an 
  *        offset
@@ -195,12 +200,17 @@ static header * allocate_chunk(size_t size) {
  * @return A block satisfying the user's request
  */
 static inline header * allocate_object(size_t raw_size) {
-  
+  //raw_size = 0, return NULL
+  if(raw_size == 0) {
+    return NULL;
+  }
   //calling function to round size to multiple of 8
   size_t rounded_raw_size = roundSize(raw_size);
 
   //calculate actual size = metadata + rounded_size
   size_t actual_size = sizeof(header) + rounded_raw_size;
+
+  
   (void) raw_size;
   assert(false);
   exit(1);
@@ -215,11 +225,17 @@ static inline header * allocate_object(size_t raw_size) {
  * @return raw_size rounded to multiple of 8
  */
 static size_t roundSize(size_t raw_size) {
+  size_t rounded_raw_size;
   if(raw_size % 8 != 0) {
     size_t modulo_raw_size = raw_size % 8;
-    size_t rounded_raw_size = raw_size + (8 - modulo_raw_size);
+    rounded_raw_size = raw_size + (8 - modulo_raw_size);
   } else {
-    size_t rounded_raw_size = raw_size;
+    rounded_raw_size = raw_size;
+  }
+
+  //make rounded raw size minimum 16 bytes
+  if(rounded_raw_size < 16) {
+    rounded_raw_size = 16;
   }
   return rounded_raw_size;
 }
@@ -246,6 +262,7 @@ static inline void deallocate_object(void * p) {
   assert(false);
   exit(1);
 }
+
 
 /**
  * @brief Helper to detect cycles in the free list
@@ -368,16 +385,6 @@ static void init() {
   // Allocate the first chunk from the OS
   header * block = allocate_chunk(ARENA_SIZE);
 
-  header * prevFencePost = get_header_from_offset(block, -ALLOC_HEADER_SIZE);
-  insert_os_chunk(prevFencePost);
-
-  lastFencePost = get_header_from_offset(block, get_size(block));
-
-  // Set the base pointer to the beginning of the first fencepost in the first
-  // chunk from the OS
-  base = ((char *) block) - ALLOC_HEADER_SIZE; //sizeof(header);
-
-  // Initialize freelist sentinels
   for (int i = 0; i < N_LISTS; i++) {
     header * freelist = &freelistSentinels[i];
     freelist->next = freelist;
