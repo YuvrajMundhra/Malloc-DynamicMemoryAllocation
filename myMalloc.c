@@ -263,15 +263,6 @@ static inline void deallocate_object(void * p) {
   exit(1);
 }
 
-/**
- * @brief Helper to detect cycles in the free list
- */
-static inline void deallocate_object(void * p) {
-  // TODO implement deallocation
-  (void) p;
-  assert(false);
-  exit(1);
-}
 
 /**
  * @brief Helper to detect cycles in the free list
