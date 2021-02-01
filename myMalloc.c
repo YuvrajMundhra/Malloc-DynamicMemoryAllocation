@@ -100,7 +100,7 @@ static inline header * get_header_from_offset(void * ptr, ptrdiff_t off) {
 	return (header *)((char *) ptr + off);
 }
 
-/**
+/*g
  * @brief Helper function to get the header to the right of a given header
  *
  * @param h original header
