@@ -100,7 +100,7 @@ static size_t roundSize(size_t);
 static header * searchFreelist(size_t);
 
 //removes the header from a freelist
-static void removeHeader(header * freelist);
+//static void removeHeader(header * freelist);
 
 
 /**
