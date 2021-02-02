@@ -275,6 +275,8 @@ static header * searchFreelist(size_t rounded_raw_size) {
       }
     }
   }
+  //delete later
+  return NULL;
 }
 
 
