@@ -265,7 +265,7 @@ static header * searchFreelist(size_t rounded_raw_size) {
   size_t freelistIndex = (rounded_raw_size/8) - 1;
   
   if(freelistIndex < N_LISTS - 1) {
-    for(int i = freelistIndex; i < N_LIST - 1; i++) {
+    for(int i = freelistIndex; i < N_LISTS - 1; i++) {
       header * freelist = &freelistSentinels[i];
       if(freelist->next == freelist) {
         continue;
