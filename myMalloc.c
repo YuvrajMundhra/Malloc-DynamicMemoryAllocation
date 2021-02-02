@@ -100,7 +100,7 @@ static size_t roundSize(size_t);
 static header * searchFreelist(size_t);
 
 //removes the header from a freelist
-//static void removeHeader(header * freelist);
+static void removeHeader(header * freelist);
 
 
 /**
@@ -211,7 +211,9 @@ static header * allocate_chunk(size_t size) {
  * @return A block satisfying the user's request
  */
 static inline header * allocate_object(size_t raw_size) {
-  
+  (void) raw_size;
+  assert(false);
+  exit(1);
   //calling function to round size to multiple of 8
   size_t rounded_raw_size = roundSize(raw_size);
 
@@ -219,12 +221,9 @@ static inline header * allocate_object(size_t raw_size) {
   size_t actual_size = sizeof(header) + rounded_raw_size;
 
   //get appropriate header/block
-  header * requiredBlock = searchFreelist(rounded_raw_size);
-
-
-  (void) raw_size;
-  assert(false);
-  exit(1);
+  header * requiredHdr = searchFreelist(rounded_raw_size);
+  set_state(requiredHdr, ALLOCATED);
+  return (requiredHdr + sizeof(header));  
 }
 
 
@@ -271,12 +270,11 @@ static header * searchFreelist(size_t rounded_raw_size) {
         continue;
       } else {
         requiredHdr = freelist->next;
-	//removeHeader(freelist);
+	removeHeader(freelist);
+	return requiredHdr;
       }
     }
   }
-  //delete later
-  return NULL;
 }
 
 
@@ -287,6 +285,17 @@ static header * searchFreelist(size_t rounded_raw_size) {
  *
  * @return void (just removes header)
  */
+
+static void removeHeader(header * freelist) {
+  header * deletingHdr = freelist->next;
+  if(deletingHdr->next == freelist) {
+    freelist->next = freelist;
+    freelist->prev = freelist;
+  } else {
+    freelist->next = deletingHdr->next;
+    deletingHdr->next->prev = freelist;
+  }
+}
 
 
 
