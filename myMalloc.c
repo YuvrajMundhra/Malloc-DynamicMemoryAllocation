@@ -100,7 +100,7 @@ static size_t roundSize(size_t);
 static header * searchFreelist(size_t);
 
 //removes the header from a freelist
-static header * removeHeader(header * freelist);
+static void removeHeader(header * freelist);
 
 
 /**
@@ -219,7 +219,7 @@ static inline header * allocate_object(size_t raw_size) {
   size_t actual_size = sizeof(header) + rounded_raw_size;
 
   //get appropriate header/block
-  static header * requiredBlock = searchFreelist(rounded_raw_size);
+  header * requiredBlock = searchFreelist(rounded_raw_size);
 
 
   (void) raw_size;
