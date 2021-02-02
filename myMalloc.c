@@ -271,7 +271,7 @@ static header * searchFreelist(size_t rounded_raw_size) {
         continue;
       } else {
         requiredHdr = freelist->next;
-	removeHeader(freelist);
+	//removeHeader(freelist);
       }
     }
   }
