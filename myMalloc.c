@@ -95,6 +95,14 @@ static bool isMallocInitialized;
 
 //Helper function round the size to 8 bytes
 static size_t roundSize(size_t);
+
+//searches the freelist to get the block of appropriate size
+static header * searchFreelist(size_t);
+
+//removes the header from a freelist
+static void removeHeader(header * freelist);
+
+
 /**
  * @brief Helper function to retrieve a header pointer from a pointer and an 
  *        offset
@@ -209,6 +217,11 @@ static inline header * allocate_object(size_t raw_size) {
 
   //calculate actual size = metadata + rounded_size
   size_t actual_size = sizeof(header) + rounded_raw_size;
+
+  //get appropriate header/block
+  static header * requiredBlock = searchFreelist(rounded_raw_size);
+
+
   (void) raw_size;
   assert(false);
   exit(1);
@@ -230,8 +243,50 @@ static size_t roundSize(size_t raw_size) {
   } else {
     rounded_raw_size = raw_size;
   }
+
+  //make rounded raw bytes minimum 16 bytes
+  if(rounded_raw_size < 16) {
+    rounded_raw_size = 16;
+  }
   return rounded_raw_size;
 }
+
+
+/**
+ * @brief Helper function searches the freelist to get block
+ * calls functions to remove header from free list and split
+ *
+ * @param rounded_raw_size
+ *
+ * @return the pointer to the start of the block(after header)
+ */
+static header * searchFreelist(size_t rounded_raw_size) {
+  header * requiredHdr;
+  size_t freelistIndex = (rounded_raw_size/8) - 1;
+  
+  if(freelistIndex < N_LIST - 1) {
+    for(int i = freelistIndex; i < N_LIST - 1; i++) {
+      header * freelist = &freelistSentinels[i];
+      if(freelist->next == freelist) {
+        continue;
+      } else {
+        requiredHdr = freelist->next;
+	removeHeader(freelist);
+      }
+    }
+  }
+}
+
+
+/**
+ * @brief Helper function to remove next header from the given freelist
+ *
+ * @param freelist pointer
+ *
+ * @return void (just removes header)
+ */
+
+
 
 /**
  * @brief Helper to get the header from a pointer allocated with malloc
