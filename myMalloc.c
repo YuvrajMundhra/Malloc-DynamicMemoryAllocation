@@ -391,7 +391,7 @@ static void removeHeader(header * freelist) {
  */
 
 static void removeHeader2param(header * freelist, header * deletingHdr) {
-  if(deleteingHdr->next == freelist) {
+  if(deletingHdr->next == freelist) {
     freelist->prev = deletingHdr->prev;
     deletingHdr->prev->next = freelist;
   } else {
