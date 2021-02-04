@@ -365,7 +365,7 @@ static void removeHeader(header * freelist) {
  */
 
 static void insertHeader(header * insertHdr, size_t index) {
-  header * freelist = &freelistSentinels[i];
+  header * freelist = &freelistSentinels[index];
   
   if(freelist->next == freelist) {
     freelist->next = insertHdr;
