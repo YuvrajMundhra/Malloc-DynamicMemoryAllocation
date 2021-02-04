@@ -276,22 +276,44 @@ static header * searchFreelist(size_t rounded_raw_size) {
   if(freelistIndex < N_LISTS - 1) {
     for(int i = freelistIndex; i < N_LISTS - 1; i++) {
       header * freelist = &freelistSentinels[i];
+
+      //if free list empty continue to next freelist
       if(freelist->next == freelist) {
         continue;
       } else {
         requiredHdr = freelist->next;
 	size_t sizeofBlock = get_size(requiredHdr);
+
+	//check to see if need to split the block
 	if(sizeofBlock - sizeof(header) == rounded_raw_size) {
 	  removeHeader(freelist);
 	  return requiredHdr;
 	} else if(sizeofBlock - sizeof(header) > rounded_raw_size) {
-	  //split
+	  //split the block
 	  header * new_Hdr = splitBlock(requiredHdr, rounded_raw_size + sizeof(header)); 
 	  return new_Hdr;
 	}
       }
     }
   }
+
+  //iterating through last freelist to find appropriate size
+  header * freelist = &freelistSentinels[N_LISTS-1];
+  header * current_hdr = freelist->next;
+
+  while(current_hdr != freelist) {
+    if(get_size(current_hdr) - sizeof(header) == rounded_raw_size) {
+      //remove header
+      return current_hdr;
+    } else if(get_size(current_hdr) - sizeof(header) > rounded_raw_size) {
+      header * new_hdr = splitBlock(current_hdr, rounded_raw_size + sizeof(header));
+      return new_hdr;
+    }
+    
+    current_hdr = current_hdr->next;
+  }
+
+  //request chunk
 }
 
 
@@ -328,9 +350,11 @@ static header * splitBlock(header * requiredHdr, size_t actual_required_size) {
     //removing header from free list
     requiredHdr->prev->next = requiredHdr->next;
     requiredHdr->next->prev = requiredHdr->prev;
+    //update left size
 
     //inserting the left block into a new free list
     insertHeader(requiredHdr, new_index);
+    //update left size
     return new_hdr;  
   }
 }
@@ -346,6 +370,7 @@ static header * splitBlock(header * requiredHdr, size_t actual_required_size) {
 
 static void removeHeader(header * freelist) {
   header * deletingHdr = freelist->next;
+  //update left size
   if(deletingHdr->next == freelist) {
     freelist->next = freelist;
     freelist->prev = freelist;
@@ -367,6 +392,7 @@ static void removeHeader(header * freelist) {
 static void insertHeader(header * insertHdr, size_t index) {
   header * freelist = &freelistSentinels[index];
   
+  //update left size
   if(freelist->next == freelist) {
     freelist->next = insertHdr;
     freelist->prev = insertHdr;
