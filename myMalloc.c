@@ -306,7 +306,7 @@ static header * searchFreelist(size_t rounded_raw_size) {
 static header * splitBlock(header * requiredHdr, size_t actual_required_size) {
   //creating pointer for new header
   size_t size_required_block = get_size(requiredHdr);
-  new_hdr_ptr = requiredHdr + size_required_block - actual_required_size;
+  void * new_hdr_ptr = requiredHdr + size_required_block - actual_required_size;
   header * new_hdr = (header *) (char *)new_hdr_ptr;
   
   //setting new header's attributes
