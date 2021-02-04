@@ -347,6 +347,9 @@ static header * splitBlock(header * requiredHdr, size_t actual_required_size) {
   if(prev_index == new_index) {
     //no need to removeHdr
     //update left size
+    if(requiredHdr->next != freelist) {
+      requiredHdr->next->left_size = get_size(requiredHdr);
+    }
     return new_hdr;
   } else {
     //removing header from free list
@@ -379,6 +382,7 @@ static void removeHeader(header * freelist) {
   } else {
     freelist->next = deletingHdr->next;
     deletingHdr->next->prev = freelist;
+    freelist->next->left_size = ALLOC_HEADER_SIZE;
   }
 }
 
@@ -427,6 +431,7 @@ static void insertHeader(header * insertHdr, size_t index) {
     insertHdr->next = current_next;
     insertHdr->prev = freelist;
     current_next->prev = insertHdr;
+    current_next->left_size = get_size(insertHdr);
   }
 }
 
