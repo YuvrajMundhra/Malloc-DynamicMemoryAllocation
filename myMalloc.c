@@ -339,6 +339,10 @@ static header * splitBlock(header * requiredHdr, size_t actual_required_size) {
 
   //changing the remainder block size (left block)
   set_size(requiredHdr, size_required_block - actual_required_size);
+
+  //update left size of next block to new hdr
+  header * right_header = get_right_header(new_hdr);
+  right_header->left_size = get_size(new_hdr);
   
   //Changing freelist for remainder of the block
   size_t prev_index = (size_required_block - sizeof(header))/8 - 1;
@@ -346,17 +350,11 @@ static header * splitBlock(header * requiredHdr, size_t actual_required_size) {
 
   if(prev_index == new_index) {
     //no need to removeHdr
-    //update left size
-    header * freelist = &freelistSentinels[prev_index];
-    if(requiredHdr->next != freelist) {
-      requiredHdr->next->left_size = get_size(requiredHdr);
-    }
     return new_hdr;
   } else {
     //removing header from free list
     header * freelist = &freelistSentinels[prev_index];
     removeHeader2param(freelist, requiredHdr);
-    //update left size
 
     //inserting the left block into a new free list
     insertHeader(requiredHdr, new_index);
@@ -376,14 +374,13 @@ static header * splitBlock(header * requiredHdr, size_t actual_required_size) {
 
 static void removeHeader(header * freelist) {
   header * deletingHdr = freelist->next;
-  //update left size
+  
   if(deletingHdr->next == freelist) {
     freelist->next = freelist;
     freelist->prev = freelist;
   } else {
     freelist->next = deletingHdr->next;
     deletingHdr->next->prev = freelist;
-    freelist->next->left_size = ALLOC_HEADER_SIZE;
   }
 }
 
@@ -404,7 +401,6 @@ static void removeHeader2param(header * freelist, header * deletingHdr) {
     header * deletingHdr_next = deletingHdr->next;
     deletingHdr_prev->next = deletingHdr_next;
     deletingHdr_next->prev = deletingHdr_prev;
-    deletingHdr_next->left_size = get_size(deletingHdr_prev);
   }
 }
 
@@ -432,7 +428,6 @@ static void insertHeader(header * insertHdr, size_t index) {
     insertHdr->next = current_next;
     insertHdr->prev = freelist;
     current_next->prev = insertHdr;
-    current_next->left_size = get_size(insertHdr);
   }
 }
 
