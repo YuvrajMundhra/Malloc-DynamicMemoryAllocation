@@ -101,6 +101,7 @@ static header * searchFreelist(size_t);
 
 //removes the header from a freelist
 static void removeHeader(header *);
+static void removeHeader(header *, header *);
 
 //splits the new block if has extra bytes and adjusts free lists
 static header * splitBlock(header *, size_t);
@@ -303,7 +304,7 @@ static header * searchFreelist(size_t rounded_raw_size) {
 
   while(current_hdr != freelist) {
     if(get_size(current_hdr) - sizeof(header) == rounded_raw_size) {
-      //remove header
+      removeHeader(freelist, current_hdr);
       return current_hdr;
     } else if(get_size(current_hdr) - sizeof(header) > rounded_raw_size) {
       header * new_hdr = splitBlock(current_hdr, rounded_raw_size + sizeof(header));
@@ -345,11 +346,12 @@ static header * splitBlock(header * requiredHdr, size_t actual_required_size) {
 
   if(prev_index == new_index) {
     //no need to removeHdr
+    //update left size
     return new_hdr;
   } else {
     //removing header from free list
-    requiredHdr->prev->next = requiredHdr->next;
-    requiredHdr->next->prev = requiredHdr->prev;
+    header * freelist = &freelistSentinels[prev_index];
+    removeHeader(freelist, requiredHdr);
     //update left size
 
     //inserting the left block into a new free list
@@ -377,6 +379,27 @@ static void removeHeader(header * freelist) {
   } else {
     freelist->next = deletingHdr->next;
     deletingHdr->next->prev = freelist;
+  }
+}
+
+/**
+ * @brief helper function to remove header from freelist that is not at the beginning
+ *
+ * @param freelist, pointer to header to be deleted
+ *
+ * @return void (just removes header)
+ */
+
+static void removeHeader(header * freelist, header * deletingHdr) {
+  if(deleteingHdr->next == freelist) {
+    freelist->prev = deletingHdr->prev;
+    deletingHdr->prev->next = freelist;
+  } else {
+    header * deletingHdr_prev = deletingHdr->prev;
+    header * deleteingHdr_next = deletingHdr->next;
+    deletingHdr_prev->next = deletingHdr_next;
+    deletingHdr_next->prev = deletingHdr_prev;
+    deletingHdr_next->left_size = get_size(deletingHdr_prev);
   }
 }
 
