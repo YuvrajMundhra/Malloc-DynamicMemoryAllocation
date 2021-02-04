@@ -100,8 +100,13 @@ static size_t roundSize(size_t);
 static header * searchFreelist(size_t);
 
 //removes the header from a freelist
-static void removeHeader(header * freelist);
+static void removeHeader(header *);
 
+//splits the new block if has extra bytes and adjusts free lists
+static header * splitBlock(header *, size_t);
+
+//inserting header into the beginning of given free list index
+static void insertHeader(header *, size_t);
 
 /**
  * @brief Helper function to retrieve a header pointer from a pointer and an 
@@ -214,13 +219,17 @@ static inline header * allocate_object(size_t raw_size) {
   (void) raw_size;
   assert(false);
   exit(1);
+  //return null if 0 bytes asked
+  if(raw_size == 0) {
+    return NULL;
+  }
   //calling function to round size to multiple of 8
   size_t rounded_raw_size = roundSize(raw_size);
 
   //calculate actual size = metadata + rounded_size
   size_t actual_size = sizeof(header) + rounded_raw_size;
 
-  //get appropriate header/block
+  //get appropriate header, set state to allocated, return block after header
   header * requiredHdr = searchFreelist(rounded_raw_size);
   set_state(requiredHdr, ALLOCATED);
   return (requiredHdr + sizeof(header));  
@@ -263,6 +272,7 @@ static header * searchFreelist(size_t rounded_raw_size) {
   header * requiredHdr;
   size_t freelistIndex = (rounded_raw_size/8) - 1;
   
+  //traverses through the available indexes except last one untile finds free list
   if(freelistIndex < N_LISTS - 1) {
     for(int i = freelistIndex; i < N_LISTS - 1; i++) {
       header * freelist = &freelistSentinels[i];
@@ -270,10 +280,58 @@ static header * searchFreelist(size_t rounded_raw_size) {
         continue;
       } else {
         requiredHdr = freelist->next;
-	removeHeader(freelist);
-	return requiredHdr;
+	size_t sizeofBlock = get_size(requiredHdr);
+	if(sizeofBlock - sizeof(header) == rounded_raw_size) {
+	  removeHeader(freelist);
+	  return requiredHdr;
+	} else if(sizeofBlock - sizeof(header) > rounded_raw_size) {
+	  //split
+	  header * new_Hdr = splitBlock(requiredHdr, rounded_raw_size + sizeof(header)); 
+	  return new_Hdr;
+	}
       }
     }
+  }
+}
+
+
+
+/**
+ * @brief Helper function to split the block and adjust the new blocks free list
+ *
+ * @param Pointer to required header, perfect size of the block needed
+ *
+ * @return pointer to new header of the required size
+ */
+static header * splitBlock(header * requiredHdr, size_t actual_required_size) {
+  //creating pointer for new header
+  size_t size_required_block = get_size(requiredHdr);
+  new_hdr_ptr = requiredHdr + size_required_block - actual_required_size;
+  header * new_hdr = (header *) (char *)new_hdr_ptr;
+  
+  //setting new header's attributes
+  set_state(new_hdr, UNALLOCATED);
+  set_size(new_hdr, actual_required_size);
+  new_hdr->left_size = size_required_block - actual_required_size;
+
+  //changing the remainder block size (left block)
+  set_size(requiredHdr, size_required_block - actual_required_size);
+  
+  //Changing freelist for remainder of the block
+  size_t prev_index = (size_required_block - sizeof(header))/8 - 1;
+  size_t new_index = (get_size(requiredHdr) - sizeof(header))/8 - 1;
+
+  if(prev_index == new_index) {
+    //no need to removeHdr
+    return new_hdr;
+  } else {
+    //removing header from free list
+    requiredHdr->prev->next = requiredHdr->next;
+    requiredHdr->next->prev = requiredHdr->prev;
+
+    //inserting the left block into a new free list
+    insertHeader(requiredHdr, new_index);
+    return new_hdr;  
   }
 }
 
@@ -297,6 +355,31 @@ static void removeHeader(header * freelist) {
   }
 }
 
+
+/**
+ * @brief Helper function to insert the header into a new freelist
+ *
+ * @param header pointer, new freelist index
+ *
+ * @return void (just inserts header)
+ */
+
+static void insertHeader(header * insertHdr, size_t index) {
+  header * freelist = &freelistSentinels[i];
+  
+  if(freelist->next == freelist) {
+    freelist->next = insertHdr;
+    freelist->prev = insertHdr;
+    insertHdr->next = freelist;
+    insertHdr->prev = freelist;
+  } else {
+    header * current_next = freelist->next;
+    freelist->next = insertHdr;
+    insertHdr->next = current_next;
+    insertHdr->prev = freelist;
+    current_next->prev = insertHdr;
+  }
+}
 
 
 /**
