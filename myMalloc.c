@@ -347,6 +347,7 @@ static header * splitBlock(header * requiredHdr, size_t actual_required_size) {
   if(prev_index == new_index) {
     //no need to removeHdr
     //update left size
+    header * freelist = &freelistSentinels[prev_index];
     if(requiredHdr->next != freelist) {
       requiredHdr->next->left_size = get_size(requiredHdr);
     }
