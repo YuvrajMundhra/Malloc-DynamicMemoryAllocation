@@ -218,8 +218,8 @@ static header * allocate_chunk(size_t size) {
  */
 static inline header * allocate_object(size_t raw_size) {
   (void) raw_size;
-  assert(false);
-  exit(1);
+  //assert(false);
+  //exit(1);
   //return null if 0 bytes asked
   if(raw_size == 0) {
     return NULL;
@@ -233,7 +233,7 @@ static inline header * allocate_object(size_t raw_size) {
   //get appropriate header, set state to allocated, return block after header
   header * requiredHdr = searchFreelist(rounded_raw_size);
   set_state(requiredHdr, ALLOCATED);
-  return (requiredHdr + sizeof(header));  
+  return (requiredHdr + sizeof(header));
 }
 
 
@@ -454,8 +454,8 @@ static inline header * ptr_to_header(void * p) {
 static inline void deallocate_object(void * p) {
   // TODO implement deallocation
   (void) p;
-  assert(false);
-  exit(1);
+  //assert(false);
+  //exit(1);
 }
 
 /**
