@@ -233,7 +233,8 @@ static inline header * allocate_object(size_t raw_size) {
   //get appropriate header, set state to allocated, return block after header
   header * requiredHdr = searchFreelist(rounded_raw_size);
   set_state(requiredHdr, ALLOCATED);
-  return (requiredHdr + ALLOC_HEADER_SIZE);
+  //return requiredHdr->data;
+  return requiredHdr + ALLOC_HEADER_SIZE;
 }
 
 
@@ -302,6 +303,8 @@ static header * searchFreelist(size_t rounded_raw_size) {
   header * freelist = &freelistSentinels[N_LISTS-1];
   header * current_hdr = freelist->next;
 
+  size_t current_hdr_size = get_size(current_hdr);
+  printf("%d", current_hdr_size);
   while(current_hdr != freelist) {
     if(get_size(current_hdr) - ALLOC_HEADER_SIZE == rounded_raw_size) {
       removeHeader2param(freelist, current_hdr);
