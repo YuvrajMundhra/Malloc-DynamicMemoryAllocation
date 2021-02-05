@@ -417,6 +417,9 @@ static void removeHeader2param(header * freelist, header * deletingHdr) {
  */
 
 static void insertHeader(header * insertHdr, size_t index) {
+  if(index >= N_LISTS) {
+    index = N_LISTS-1;
+  }
   header * freelist = &freelistSentinels[index];
   
   //update left size
