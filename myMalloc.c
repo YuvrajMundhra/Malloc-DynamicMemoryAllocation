@@ -354,6 +354,15 @@ static header * splitBlock(header * requiredHdr, size_t actual_required_size) {
   size_t prev_index = (size_required_block - ALLOC_HEADER_SIZE)/8 - 1;
   size_t new_index = (get_size(requiredHdr) - ALLOC_HEADER_SIZE)/8 - 1;
 
+  if(prev_index >= N_LISTS) {
+    prev_index = N_LISTS - 1;
+  }
+
+  if(new_index >= N_LISTS) {
+    new_index = N_LISTS - 1;
+  }
+
+
   if(prev_index == new_index) {
     //no need to removeHdr
     return new_hdr;
@@ -420,9 +429,6 @@ static void removeHeader2param(header * freelist, header * deletingHdr) {
  */
 
 static void insertHeader(header * insertHdr, size_t index) {
-  if(index >= N_LISTS) {
-    index = N_LISTS-1;
-  }
   header * freelist = &freelistSentinels[index];
   
   //update left size
