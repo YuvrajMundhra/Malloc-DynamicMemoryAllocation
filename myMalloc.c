@@ -527,7 +527,7 @@ static inline void deallocate_object(void * p) {
       return;
     } else {
       header * tempFreelist = &freelistSentinels[prev_index];
-      removeHeader2header(tempFreelist, before_header);
+      removeHeader2param(tempFreelist, before_header);
       insertHeader(before_header, new_index);
     }
 
@@ -546,7 +546,7 @@ static inline void deallocate_object(void * p) {
     new_right_header->left_size = new_header_size;
 
     //adding new block into adjusted freelist
-    new_index = get_index(free_header);
+    size_t new_index = get_index(free_header);
     insertHeader(free_header, new_index);
 
   } else if(get_state(before_header) == UNALLOCATED && get_state(after_header) == ALLOCATED) {
