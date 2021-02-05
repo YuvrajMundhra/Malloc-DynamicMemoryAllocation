@@ -234,7 +234,7 @@ static inline header * allocate_object(size_t raw_size) {
   header * requiredHdr = searchFreelist(rounded_raw_size);
   set_state(requiredHdr, ALLOCATED);
   //return requiredHdr->data;
-  return requiredHdr + ALLOC_HEADER_SIZE;
+  return (header *)(requiredHdr->data);
 }
 
 
@@ -330,18 +330,18 @@ static header * searchFreelist(size_t rounded_raw_size) {
  * @return pointer to new header of the required size
  */
 static header * splitBlock(header * requiredHdr, size_t actual_required_size) {
+  //changing the remainder block size(left block)
+  set_size(requiredHdr, get_size(requiredHdr) - actual_required_size);
+	
   //creating pointer for new header
-  size_t size_required_block = get_size(requiredHdr);
-  void * new_hdr_ptr = requiredHdr + size_required_block - actual_required_size;
+  void * new_hdr_ptr = get_header_from_offset(requiredHdr, get_size(requiredHdr));
   header * new_hdr = (header *) (char *)new_hdr_ptr;
   
   //setting new header's attributes
   set_state(new_hdr, UNALLOCATED);
   set_size(new_hdr, actual_required_size);
-  new_hdr->left_size = size_required_block - actual_required_size;
+  new_hdr->left_size = get_size(requiredHdr);
 
-  //changing the remainder block size (left block)
-  set_size(requiredHdr, size_required_block - actual_required_size);
 
   //update left size of next block to new hdr
   header * right_header = get_right_header(new_hdr);
