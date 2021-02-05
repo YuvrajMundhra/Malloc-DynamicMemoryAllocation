@@ -228,12 +228,12 @@ static inline header * allocate_object(size_t raw_size) {
   size_t rounded_raw_size = roundSize(raw_size);
 
   //calculate actual size = metadata + rounded_size
-  size_t actual_size = sizeof(header) + rounded_raw_size;
+  size_t actual_size = ALLOC_HEADER_SIZE + rounded_raw_size;
 
   //get appropriate header, set state to allocated, return block after header
   header * requiredHdr = searchFreelist(rounded_raw_size);
   set_state(requiredHdr, ALLOCATED);
-  return (requiredHdr + sizeof(header));
+  return (requiredHdr + ALLOC_HEADER_SIZE);
 }
 
 
@@ -286,12 +286,12 @@ static header * searchFreelist(size_t rounded_raw_size) {
 	size_t sizeofBlock = get_size(requiredHdr);
 
 	//check to see if need to split the block
-	if(sizeofBlock - sizeof(header) == rounded_raw_size) {
+	if(sizeofBlock - ALLOC_HEADER_SIZE == rounded_raw_size) {
 	  removeHeader(freelist);
 	  return requiredHdr;
-	} else if(sizeofBlock - sizeof(header) > rounded_raw_size) {
+	} else if(sizeofBlock - ALLOC_HEADER_SIZE > rounded_raw_size) {
 	  //split the block
-	  header * new_Hdr = splitBlock(requiredHdr, rounded_raw_size + sizeof(header)); 
+	  header * new_Hdr = splitBlock(requiredHdr, rounded_raw_size + ALLOC_HEADER_SIZE); 
 	  return new_Hdr;
 	}
       }
@@ -303,11 +303,11 @@ static header * searchFreelist(size_t rounded_raw_size) {
   header * current_hdr = freelist->next;
 
   while(current_hdr != freelist) {
-    if(get_size(current_hdr) - sizeof(header) == rounded_raw_size) {
+    if(get_size(current_hdr) - ALLOC_HEADER_SIZE == rounded_raw_size) {
       removeHeader2param(freelist, current_hdr);
       return current_hdr;
-    } else if(get_size(current_hdr) - sizeof(header) > rounded_raw_size) {
-      header * new_hdr = splitBlock(current_hdr, rounded_raw_size + sizeof(header));
+    } else if(get_size(current_hdr) - ALLOC_HEADER_SIZE > rounded_raw_size) {
+      header * new_hdr = splitBlock(current_hdr, rounded_raw_size + ALLOC_HEADER_SIZE);
       return new_hdr;
     }
     
@@ -348,8 +348,8 @@ static header * splitBlock(header * requiredHdr, size_t actual_required_size) {
   
   
   //Changing freelist for remainder of the block
-  size_t prev_index = (size_required_block - sizeof(header))/8 - 1;
-  size_t new_index = (get_size(requiredHdr) - sizeof(header))/8 - 1;
+  size_t prev_index = (size_required_block - ALLOC_HEADER_SIZE)/8 - 1;
+  size_t new_index = (get_size(requiredHdr) - ALLOC_HEADER_SIZE)/8 - 1;
 
   if(prev_index == new_index) {
     //no need to removeHdr
