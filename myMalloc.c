@@ -527,7 +527,7 @@ static inline void deallocate_object(void * p) {
       return;
     } else {
       header * tempFreelist = &freelistSentinels[prev_index];
-      removeHeader(tempFreelist, before_header);
+      removeHeader2header(tempFreelist, before_header);
       insertHeader(before_header, new_index);
     }
 
@@ -566,7 +566,7 @@ static inline void deallocate_object(void * p) {
       return;
     } else {
       header * tempFreelist = &freelistSentinels[prev_index];
-      removeHeader(tempFreelist, before_header);
+      removeHeader2param(tempFreelist, before_header);
       insertHeader(before_header, new_index);
     }
   }
