@@ -304,7 +304,7 @@ static header * searchFreelist(size_t rounded_raw_size) {
   header * current_hdr = freelist->next;
 
   size_t current_hdr_size = get_size(current_hdr);
-  printf("%d", current_hdr_size);
+  printf("%ld", current_hdr_size);
   while(current_hdr != freelist) {
     if(get_size(current_hdr) - ALLOC_HEADER_SIZE == rounded_raw_size) {
       removeHeader2param(freelist, current_hdr);
