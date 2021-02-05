@@ -343,10 +343,8 @@ static header * splitBlock(header * requiredHdr, size_t actual_required_size) {
   //update left size of next block to new hdr
   header * right_header = get_right_header(new_hdr);
   
-  //checkkkkkkkkkkk
-  if(right_header != FENCEPOST) {
-    right_header->left_size = get_size(new_hdr);
-  }
+  //checkkkkkkkkkkk, what if right is fencepost
+  right_header->left_size = get_size(new_hdr);
   
   
   //Changing freelist for remainder of the block
