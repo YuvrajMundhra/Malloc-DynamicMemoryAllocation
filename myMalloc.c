@@ -487,6 +487,10 @@ static inline void deallocate_object(void * p) {
   //assert(false);
   //exit(1);
   
+  //checking for null
+  if(p == NULL) {
+    return;
+  }
   //getting the ptr to header of the block to be freed
   header * free_header = get_header_from_offset(p, -ALLOC_HEADER_SIZE);
 
