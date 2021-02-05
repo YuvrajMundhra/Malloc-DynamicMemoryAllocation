@@ -351,7 +351,7 @@ static header * splitBlock(header * requiredHdr, size_t actual_required_size) {
   
   
   //Changing freelist for remainder of the block
-  size_t prev_index = (size_required_block - ALLOC_HEADER_SIZE)/8 - 1;
+  size_t prev_index = (get_size(requiredHdr) + actual_required_size - ALLOC_HEADER_SIZE)/8 - 1;
   size_t new_index = (get_size(requiredHdr) - ALLOC_HEADER_SIZE)/8 - 1;
 
   if(prev_index >= N_LISTS) {
