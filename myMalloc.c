@@ -501,13 +501,17 @@ static inline void deallocate_object(void * p) {
   //set state to UNALLOCATED for free_header
   set_state(free_header, UNALLOCATED);
 
+  //get states of before and after headers
+  size_t state_before_header = get_state(before_header);
+  size_t state_after_header = get_state(after_header);
+
   //all possible cases with neighboring headers
   
-  if(get_state(before_header) == ALLOCATED && get_state(after_header) == ALLOCATED) {
+  if(state_before_header == ALLOCATED && state_after_header == ALLOCATED) {
     size_t index = get_index(free_header);
     insertHeader(free_header, index);
   
-  } else if(get_state(before_header) == UNALLOCATED && get_state(after_header) == UNALLOCATED) {
+  } else if(state_before_header == UNALLOCATED && stae_after_header == UNALLOCATED) {
     
     //removing after_header from freelist
     size_t after_header_index = get_index(after_header);
@@ -535,7 +539,7 @@ static inline void deallocate_object(void * p) {
       insertHeader(before_header, new_index);
     }
 
-  } else if(get_state(before_header) == ALLOCATED && get_state(after_header) == UNALLOCATED) {
+  } else if(state_before_header == ALLOCATED && state_after_header == UNALLOCATED) {
     //removing after_header from freelist
     size_t after_header_index = get_index(after_header);
     header * freelist = &freelistSentinels[after_header_index];
@@ -553,7 +557,7 @@ static inline void deallocate_object(void * p) {
     size_t new_index = get_index(free_header);
     insertHeader(free_header, new_index);
 
-  } else if(get_state(before_header) == UNALLOCATED && get_state(after_header) == ALLOCATED) {
+  } else if(state_before_header == UNALLOCATED && state_after_header == ALLOCATED) {
     //previous index for before header
     size_t prev_index = get_index(before_header);
 
