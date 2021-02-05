@@ -511,7 +511,7 @@ static inline void deallocate_object(void * p) {
     size_t index = get_index(free_header);
     insertHeader(free_header, index);
   
-  } else if(state_before_header == UNALLOCATED && stae_after_header == UNALLOCATED) {
+  } else if(state_before_header == UNALLOCATED && state_after_header == UNALLOCATED) {
     
     //removing after_header from freelist
     size_t after_header_index = get_index(after_header);
