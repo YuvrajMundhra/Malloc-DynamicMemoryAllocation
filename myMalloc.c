@@ -273,7 +273,7 @@ static header * searchFreelist(size_t rounded_raw_size) {
   header * requiredHdr;
   size_t freelistIndex = (rounded_raw_size/8) - 1;
   
-  //traverses through the available indexes except last one untile finds free list
+  //traverses through the available indexes except last one until finds free list
   if(freelistIndex < N_LISTS - 1) {
     for(int i = freelistIndex; i < N_LISTS - 1; i++) {
       header * freelist = &freelistSentinels[i];
@@ -342,7 +342,12 @@ static header * splitBlock(header * requiredHdr, size_t actual_required_size) {
 
   //update left size of next block to new hdr
   header * right_header = get_right_header(new_hdr);
-  right_header->left_size = get_size(new_hdr);
+  
+  //checkkkkkkkkkkk
+  if(right_header != FENCEPOST) {
+    right_header->left_size = get_size(new_hdr);
+  }
+  
   
   //Changing freelist for remainder of the block
   size_t prev_index = (size_required_block - sizeof(header))/8 - 1;
@@ -358,7 +363,7 @@ static header * splitBlock(header * requiredHdr, size_t actual_required_size) {
 
     //inserting the left block into a new free list
     insertHeader(requiredHdr, new_index);
-    //update left size
+
     return new_hdr;  
   }
 }
