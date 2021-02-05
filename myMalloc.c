@@ -499,7 +499,7 @@ static inline void deallocate_object(void * p) {
 
   //all possible cases with neighboring headers
   
-  if(get_state(before_header) == ALLOCATED && get_state(after_header)) {
+  if(get_state(before_header) == ALLOCATED && get_state(after_header) == ALLOCATED) {
     size_t index = get_index(free_header);
     insertHeader(free_header, index);
   
