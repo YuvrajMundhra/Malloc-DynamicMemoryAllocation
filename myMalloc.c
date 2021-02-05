@@ -505,6 +505,14 @@ static inline void deallocate_object(void * p) {
   size_t state_before_header = get_state(before_header);
   size_t state_after_header = get_state(after_header);
 
+  //checking for state of fenceposts and marking them as allocated
+  if(state_before_header == FENCEPOST) {
+    state_before_header = ALLOCATED;
+  }
+  if(state_after_header == FENCEPOST) {
+    state_after_header = ALLOCATED;
+  }
+
   //all possible cases with neighboring headers
   
   if(state_before_header == ALLOCATED && state_after_header == ALLOCATED) {
