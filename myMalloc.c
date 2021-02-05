@@ -109,6 +109,9 @@ static header * splitBlock(header *, size_t);
 //inserting header into the beginning of given free list index
 static void insertHeader(header *, size_t);
 
+//gets index of free list for a given header
+static size_t get_index(header *);
+
 /**
  * @brief Helper function to retrieve a header pointer from a pointer and an 
  *        offset
@@ -431,7 +434,6 @@ static void removeHeader2param(header * freelist, header * deletingHdr) {
 static void insertHeader(header * insertHdr, size_t index) {
   header * freelist = &freelistSentinels[index];
   
-  //update left size
   if(freelist->next == freelist) {
     freelist->next = insertHdr;
     freelist->prev = insertHdr;
@@ -444,6 +446,23 @@ static void insertHeader(header * insertHdr, size_t index) {
     insertHdr->prev = freelist;
     current_next->prev = insertHdr;
   }
+}
+
+/**
+ * @brief Helper function to get the index of the freelist for a given header
+ *
+ * @param pointer to header
+ *
+ * @return index of freelist(size_T)
+ */
+
+static size_t get_index(header * hdr) {
+  size_t hdr_size = get_size(hdr);
+  size_t index = (hdr_size - ALLOC_HEADER_SIZE)/8 - 1;
+  if(index >= N_LISTS) {
+    index = N_LISTS - 1;
+  }
+  return index;
 }
 
 
@@ -464,10 +483,93 @@ static inline header * ptr_to_header(void * p) {
  * @param p The pointer returned to the user by a call to malloc
  */
 static inline void deallocate_object(void * p) {
-  // TODO implement deallocation
   (void) p;
   //assert(false);
   //exit(1);
+  
+  //getting the ptr to header of the block to be freed
+  header * free_header = get_header_from_offset(p, -ALLOC_HEADER_SIZE);
+
+  //getting before and after headers
+  header * before_header = get_left_header(free_header);
+  header * after_header = get_right_header(free_header);
+
+  //set state to UNALLOCATED for free_header
+  set_state(free_header, UNALLOCATED);
+
+  //all possible cases with neighboring headers
+  
+  if(get_state(before_header) == ALLOCATED && get_state(after_header)) {
+    size_t index = get_index(free_header);
+    insertHeader(free_header, index);
+  
+  } else if(get_state(before_header) == UNALLOCATED && get_state(after_header) == UNALLOCATED) {
+    
+    //removing after_header from freelist
+    size_t after_header_index = get_index(after_header);
+    header * freelist = &freelistSentinels[after_header_index];
+    removeHeader2param(freelist, after_header);
+
+    //previous index for before header
+    size_t prev_index = get_index(before_header);
+
+    //set new size
+    size_t new_header_size = get_size(free_header) + get_size(before_header) + get_size(after_header);
+    set_size(before_header, new_header_size);
+
+    //changing left size for next header
+    header * new_right_header = get_right_header(before_header);
+    new_right_header->left_size = new_header_size;
+
+    //adding new block into adjusted freelist
+    size_t new_index = get_index(before_header);
+    if(prev_index == new_index) {
+      return;
+    } else {
+      header * tempFreelist = &freelistSentinels[prev_index];
+      removeHeader(tempFreelist, before_header);
+      insertHeader(before_header, new_index);
+    }
+
+  } else if(get_state(before_header) == ALLOCATED && get_state(after_header) == UNALLOCATED) {
+    //removing after_header from freelist
+    size_t after_header_index = get_index(after_header);
+    header * freelist = &freelistSentinels[after_header_index];
+    removeHeader2param(freelist, after_header);
+    
+    //set new size
+    size_t new_header_size = get_size(free_header) + get_size(after_header);
+    set_size(free_header, new_header_size);
+
+    //changing left size for next header
+    header * new_right_header = get_right_header(free_header);
+    new_right_header->left_size = new_header_size;
+
+    //adding new block into adjusted freelist
+    new_index = get_index(free_header);
+    insertHeader(free_header, new_index);
+
+  } else if(get_state(before_header) == UNALLOCATED && get_state(after_header) == ALLOCATED) {
+    //previous index for before header
+    size_t prev_index = get_index(before_header);
+
+    //set new size
+    size_t new_header_size = get_size(before_header) + get_size(free_header);
+    set_size(before_header, new_header_size);
+
+    //changing left size for next header
+    after_header->left_size = new_header_size;
+
+    //adding new block into adjusted freelist
+    size_t new_index = get_index(before_header);
+    if(prev_index == new_index) {
+      return;
+    } else {
+      header * tempFreelist = &freelistSentinels[prev_index];
+      removeHeader(tempFreelist, before_header);
+      insertHeader(before_header, new_index);
+    }
+  }
 }
 
 /**
