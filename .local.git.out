@@ -1,0 +1,1194 @@
+Your branch is up to date with 'origin/master'.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+
+nothing added to commit but untracked files present
+Your branch is up to date with 'origin/master'.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+	examples/composite_ex
+	examples/constructor_ex
+	tests/test_all_lists
+	tests/test_coalesce_chunk_coalesce
+	tests/test_coalesce_chunk_insert
+	tests/test_corrupted_canary
+	tests/test_double_free
+	tests/test_exact
+	tests/test_free_both
+	tests/test_free_even
+	tests/test_free_insert
+	tests/test_free_left
+	tests/test_free_null
+	tests/test_free_odd
+	tests/test_free_right
+	tests/test_insert_chunk
+	tests/test_large
+	tests/test_locks
+	tests/test_malloc_large
+	tests/test_malloc_too_large
+	tests/test_malloc_zero
+	tests/test_multi_malloc
+	tests/test_out_of_ram
+	tests/test_random
+	tests/test_random_sizes
+	tests/test_simple0
+	tests/test_simple1
+	tests/test_simple2
+	tests/test_simple3
+	tests/test_simple4
+	tests/test_simple5
+	tests/test_simple6
+	tests/test_split
+	tests/test_verify
+	tests/test_very_large
+
+nothing added to commit but untracked files present
+Your branch is behind 'origin/master' by 4 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+On branch master
+Your branch is behind 'origin/master' by 4 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Untracked files:
+	.local.git.out
+	examples/composite_ex
+	examples/constructor_ex
+	tests/test_all_lists
+	tests/test_coalesce_chunk_coalesce
+	tests/test_coalesce_chunk_insert
+	tests/test_corrupted_canary
+	tests/test_double_free
+	tests/test_exact
+	tests/test_free_both
+	tests/test_free_even
+	tests/test_free_insert
+	tests/test_free_left
+	tests/test_free_null
+	tests/test_free_odd
+	tests/test_free_right
+	tests/test_insert_chunk
+	tests/test_large
+	tests/test_locks
+	tests/test_malloc_large
+	tests/test_malloc_too_large
+	tests/test_malloc_zero
+	tests/test_multi_malloc
+	tests/test_out_of_ram
+	tests/test_random
+	tests/test_random_sizes
+	tests/test_simple0
+	tests/test_simple1
+	tests/test_simple2
+	tests/test_simple3
+	tests/test_simple4
+	tests/test_simple5
+	tests/test_simple6
+	tests/test_split
+	tests/test_verify
+	tests/test_very_large
+
+nothing added to commit but untracked files present
+M	myMalloc.c
+Your branch is behind 'origin/master' by 4 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+[master b36d337] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Your branch and 'origin/master' have diverged,
+and have 1 and 4 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+On branch master
+Your branch and 'origin/master' have diverged,
+and have 1 and 4 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+
+Untracked files:
+	.local.git.out
+	examples/composite_ex
+	examples/constructor_ex
+	tests/test_all_lists
+	tests/test_coalesce_chunk_coalesce
+	tests/test_coalesce_chunk_insert
+	tests/test_corrupted_canary
+	tests/test_double_free
+	tests/test_exact
+	tests/test_free_both
+	tests/test_free_even
+	tests/test_free_insert
+	tests/test_free_left
+	tests/test_free_null
+	tests/test_free_odd
+	tests/test_free_right
+	tests/test_insert_chunk
+	tests/test_large
+	tests/test_locks
+	tests/test_malloc_large
+	tests/test_malloc_too_large
+	tests/test_malloc_zero
+	tests/test_multi_malloc
+	tests/test_out_of_ram
+	tests/test_random
+	tests/test_random_sizes
+	tests/test_simple0
+	tests/test_simple1
+	tests/test_simple2
+	tests/test_simple3
+	tests/test_simple4
+	tests/test_simple5
+	tests/test_simple6
+	tests/test_split
+	tests/test_verify
+	tests/test_very_large
+
+nothing added to commit but untracked files present
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+	.local.git.out
+	examples/composite_ex
+	examples/constructor_ex
+	tests/test_all_lists
+	tests/test_coalesce_chunk_coalesce
+	tests/test_coalesce_chunk_insert
+	tests/test_corrupted_canary
+	tests/test_double_free
+	tests/test_exact
+	tests/test_free_both
+	tests/test_free_even
+	tests/test_free_insert
+	tests/test_free_left
+	tests/test_free_null
+	tests/test_free_odd
+	tests/test_free_right
+	tests/test_insert_chunk
+	tests/test_large
+	tests/test_locks
+	tests/test_malloc_large
+	tests/test_malloc_too_large
+	tests/test_malloc_zero
+	tests/test_multi_malloc
+	tests/test_out_of_ram
+	tests/test_random
+	tests/test_random_sizes
+	tests/test_simple0
+	tests/test_simple1
+	tests/test_simple2
+	tests/test_simple3
+	tests/test_simple4
+	tests/test_simple5
+	tests/test_simple6
+	tests/test_split
+	tests/test_verify
+	tests/test_very_large
+
+nothing added to commit but untracked files present
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master fc7aa76] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 14 insertions(+), 21 deletions(-)
+Your branch is up to date with 'origin/master'.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+	examples/composite_ex
+	examples/constructor_ex
+	tests/test_all_lists
+	tests/test_coalesce_chunk_coalesce
+	tests/test_coalesce_chunk_insert
+	tests/test_corrupted_canary
+	tests/test_double_free
+	tests/test_exact
+	tests/test_free_both
+	tests/test_free_even
+	tests/test_free_insert
+	tests/test_free_left
+	tests/test_free_null
+	tests/test_free_odd
+	tests/test_free_right
+	tests/test_insert_chunk
+	tests/test_large
+	tests/test_locks
+	tests/test_malloc_large
+	tests/test_malloc_too_large
+	tests/test_malloc_zero
+	tests/test_multi_malloc
+	tests/test_out_of_ram
+	tests/test_random
+	tests/test_random_sizes
+	tests/test_simple0
+	tests/test_simple1
+	tests/test_simple2
+	tests/test_simple3
+	tests/test_simple4
+	tests/test_simple5
+	tests/test_simple6
+	tests/test_split
+	tests/test_verify
+	tests/test_very_large
+
+nothing added to commit but untracked files present
+Your branch is up to date with 'origin/master'.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+	examples/composite_ex
+	examples/constructor_ex
+	tests/test_all_lists
+	tests/test_coalesce_chunk_coalesce
+	tests/test_coalesce_chunk_insert
+	tests/test_corrupted_canary
+	tests/test_double_free
+	tests/test_exact
+	tests/test_free_both
+	tests/test_free_even
+	tests/test_free_insert
+	tests/test_free_left
+	tests/test_free_null
+	tests/test_free_odd
+	tests/test_free_right
+	tests/test_insert_chunk
+	tests/test_large
+	tests/test_locks
+	tests/test_malloc_large
+	tests/test_malloc_too_large
+	tests/test_malloc_zero
+	tests/test_multi_malloc
+	tests/test_out_of_ram
+	tests/test_random
+	tests/test_random_sizes
+	tests/test_simple0
+	tests/test_simple1
+	tests/test_simple2
+	tests/test_simple3
+	tests/test_simple4
+	tests/test_simple5
+	tests/test_simple6
+	tests/test_split
+	tests/test_verify
+	tests/test_very_large
+
+nothing added to commit but untracked files present
+Your branch is up to date with 'origin/master'.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+	examples/composite_ex
+	examples/constructor_ex
+	tests/test_all_lists
+	tests/test_coalesce_chunk_coalesce
+	tests/test_coalesce_chunk_insert
+	tests/test_corrupted_canary
+	tests/test_double_free
+	tests/test_exact
+	tests/test_free_both
+	tests/test_free_even
+	tests/test_free_insert
+	tests/test_free_left
+	tests/test_free_null
+	tests/test_free_odd
+	tests/test_free_right
+	tests/test_insert_chunk
+	tests/test_large
+	tests/test_locks
+	tests/test_malloc_large
+	tests/test_malloc_too_large
+	tests/test_malloc_zero
+	tests/test_multi_malloc
+	tests/test_out_of_ram
+	tests/test_random
+	tests/test_random_sizes
+	tests/test_simple0
+	tests/test_simple1
+	tests/test_simple2
+	tests/test_simple3
+	tests/test_simple4
+	tests/test_simple5
+	tests/test_simple6
+	tests/test_split
+	tests/test_verify
+	tests/test_very_large
+
+nothing added to commit but untracked files present
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master e6c1753] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master f96c4cc] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 55 insertions(+)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master b1d53bc] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 032d3b8] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master c28bafb] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 318418e] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 75d82cc] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+Your branch is up to date with 'origin/master'.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+	examples/composite_ex
+	examples/constructor_ex
+	tests/test_all_lists
+	tests/test_coalesce_chunk_coalesce
+	tests/test_coalesce_chunk_insert
+	tests/test_corrupted_canary
+	tests/test_double_free
+	tests/test_exact
+	tests/test_free_both
+	tests/test_free_even
+	tests/test_free_insert
+	tests/test_free_left
+	tests/test_free_null
+	tests/test_free_odd
+	tests/test_free_right
+	tests/test_insert_chunk
+	tests/test_large
+	tests/test_locks
+	tests/test_malloc_large
+	tests/test_malloc_too_large
+	tests/test_malloc_zero
+	tests/test_multi_malloc
+	tests/test_out_of_ram
+	tests/test_random
+	tests/test_random_sizes
+	tests/test_simple1
+	tests/test_simple2
+	tests/test_simple3
+	tests/test_simple4
+	tests/test_simple5
+	tests/test_simple6
+	tests/test_split
+	tests/test_verify
+	tests/test_very_large
+
+nothing added to commit but untracked files present
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master daac8ba] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 77f045a] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 5400b80] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 20 insertions(+), 11 deletions(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 9d3a55d] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 87 insertions(+), 4 deletions(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 3cd9531] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 2682a45] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master a3fbb02] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 27 insertions(+), 1 deletion(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 922439f] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 26 insertions(+), 3 deletions(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master aae0911] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master a4d67de] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 46f2d90] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 5 insertions(+)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 8402691] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 51076fa] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 5 insertions(+), 10 deletions(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master c4206ab] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master c25a839] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 3596146] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master b84633f] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master b269169] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 3 insertions(+)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master e9d3f7c] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 291b27f] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master f8c7eab] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 8800802] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 7574b17] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 89ae3b7] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 86b9a78] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 104 insertions(+), 2 deletions(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master e891bda] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master bbb39d2] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master dd21753] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Your branch is up to date with 'origin/master'.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+	examples/composite_ex
+	examples/constructor_ex
+	tests/test_all_lists
+	tests/test_coalesce_chunk_coalesce
+	tests/test_coalesce_chunk_insert
+	tests/test_corrupted_canary
+	tests/test_double_free
+	tests/test_exact
+	tests/test_free_both
+	tests/test_free_even
+	tests/test_free_insert
+	tests/test_free_left
+	tests/test_free_null
+	tests/test_free_odd
+	tests/test_free_right
+	tests/test_insert_chunk
+	tests/test_large
+	tests/test_locks
+	tests/test_malloc_large
+	tests/test_malloc_too_large
+	tests/test_malloc_zero
+	tests/test_multi_malloc
+	tests/test_out_of_ram
+	tests/test_random
+	tests/test_random_sizes
+	tests/test_simple0
+	tests/test_simple1
+	tests/test_simple2
+	tests/test_simple3
+	tests/test_simple4
+	tests/test_simple5
+	tests/test_simple6
+	tests/test_split
+	tests/test_verify
+	tests/test_very_large
+
+nothing added to commit but untracked files present
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master dda8ecf] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 4 insertions(+)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 0f9723f] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 6f04763] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
+[master d1ebcce] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 8 insertions(+)
+Your branch is up to date with 'origin/master'.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+	examples/composite_ex
+	examples/constructor_ex
+	tests/test_all_lists
+	tests/test_coalesce_chunk_coalesce
+	tests/test_coalesce_chunk_insert
+	tests/test_corrupted_canary
+	tests/test_double_free
+	tests/test_exact
+	tests/test_free_both
+	tests/test_free_even
+	tests/test_free_insert
+	tests/test_free_left
+	tests/test_free_null
+	tests/test_free_odd
+	tests/test_free_right
+	tests/test_insert_chunk
+	tests/test_large
+	tests/test_locks
+	tests/test_malloc_large
+	tests/test_malloc_too_large
+	tests/test_malloc_zero
+	tests/test_multi_malloc
+	tests/test_out_of_ram
+	tests/test_random
+	tests/test_random_sizes
+	tests/test_simple0
+	tests/test_simple1
+	tests/test_simple2
+	tests/test_simple3
+	tests/test_simple4
+	tests/test_simple5
+	tests/test_simple6
+	tests/test_split
+	tests/test_verify
+	tests/test_very_large
+
+nothing added to commit but untracked files present
+Your branch is up to date with 'origin/master'.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+	examples/composite_ex
+	examples/constructor_ex
+	tests/test_all_lists
+	tests/test_coalesce_chunk_coalesce
+	tests/test_coalesce_chunk_insert
+	tests/test_corrupted_canary
+	tests/test_double_free
+	tests/test_exact
+	tests/test_free_both
+	tests/test_free_even
+	tests/test_free_insert
+	tests/test_free_left
+	tests/test_free_null
+	tests/test_free_odd
+	tests/test_free_right
+	tests/test_insert_chunk
+	tests/test_large
+	tests/test_locks
+	tests/test_malloc_large
+	tests/test_malloc_too_large
+	tests/test_malloc_zero
+	tests/test_multi_malloc
+	tests/test_out_of_ram
+	tests/test_random
+	tests/test_random_sizes
+	tests/test_simple0
+	tests/test_simple1
+	tests/test_simple2
+	tests/test_simple3
+	tests/test_simple4
+	tests/test_simple5
+	tests/test_simple6
+	tests/test_split
+	tests/test_verify
+	tests/test_very_large
+
+nothing added to commit but untracked files present
+Your branch is up to date with 'origin/master'.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+
+nothing added to commit but untracked files present
