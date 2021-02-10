@@ -1192,3 +1192,5 @@ Untracked files:
 	.local.git.out
 
 nothing added to commit but untracked files present
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.

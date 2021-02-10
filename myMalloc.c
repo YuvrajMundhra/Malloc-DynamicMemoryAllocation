@@ -112,6 +112,9 @@ static void insertHeader(header *, size_t);
 //gets index of free list for a given header
 static size_t get_index(header *);
 
+//gets another chunk and coalesces
+static header * add_chunk(size_t rounded_raw_size);
+
 /**
  * @brief Helper function to retrieve a header pointer from a pointer and an 
  *        offset
@@ -320,7 +323,8 @@ static header * searchFreelist(size_t rounded_raw_size) {
     current_hdr = current_hdr->next;
   }
 
-  //request chunk
+  //calls function to add chunk
+  header * new_hdr = add_chunk(rounded_raw_size);
 }
 
 
@@ -349,7 +353,7 @@ static header * splitBlock(header * requiredHdr, size_t actual_required_size) {
   //update left size of next block to new hdr
   header * right_header = get_right_header(new_hdr);
   
-  //checkkkkkkkkkkk, what if right is fencepost
+  //setting left size of right header
   right_header->left_size = get_size(new_hdr);
   
   
@@ -378,6 +382,41 @@ static header * splitBlock(header * requiredHdr, size_t actual_required_size) {
     insertHeader(requiredHdr, new_index);
 
     return new_hdr;  
+  }
+}
+
+
+/**
+ * @brief Helper function to add chunk and coalesce
+ *
+ * @param rounded_raw_size
+ *
+ * @return header of the block to be used
+ */
+
+static header * add_chunk(size_t rounded_raw_size) {
+  //requesting new chunk from OS
+  header * new_chunk_hdr = allocate_chunk(ARENA_SIZE);
+
+  //inserting the new chunk into the array of chunks
+  header * prevFencePost = get_header_from_offset(new_chunk_hdr, -ALLOC_HEADER_SIZE);
+  insert_os_chunk(prevFencePost);
+
+  //updating last fencepost
+  header * prev_chunk_last_fencepost = lastFencePost;
+  lastFencePost = get_header_from_offset(new_chunk_hdr, get_size(new_chunk_hdr));
+
+  //coalescing by checking if the chunks are consecutive
+  if(prev_chunk_last_fencepost + ALLOC_HEADER_SIZE == new_chunk_hdr - ALLOC_HEADER_SIZE) {
+    header * prev_chunk_hdr = get_left_header(prev_chunk_last_fencepost);
+
+    //checking if last header of previous chunk is unallocated and setting it's new size
+    size_t new_size;
+    if(get_state(prev_chunk_hdr) == UNALLOCATED) {
+      new_size = get_size(prev_chunk_hdr) + 2*ALLOC_HEADER_SIZE + get_size(new_chunk_hdr);
+    } else {
+      new_size = get_size(prev_chunk_hdr); 
+    }
   }
 }
 
