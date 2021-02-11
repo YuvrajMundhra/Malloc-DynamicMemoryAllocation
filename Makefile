@@ -10,7 +10,7 @@ git-commit:
 
 .PHONY: tests
 tests:
-	$(MAKE) -C tests
+	$(MAKE) -C -DDEBUG tests
 
 .PHONY: examples
 examples:
