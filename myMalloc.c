@@ -343,7 +343,7 @@ static header * searchFreelist(size_t rounded_raw_size) {
       return new_hdr;
     } 
     //run while loop until the block size is not sufficient
-  } while(blockSize - ALLOC < rounded_raw_size);
+  } while(blockSize - ALLOC_HEADER_SIZE < rounded_raw_size);
 }
 
 

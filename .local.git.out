@@ -1335,3 +1335,30 @@ M	tests/test_split
 M	tests/test_verify
 M	tests/test_very_large
 Your branch is up to date with 'origin/master'.
+[master 287a558] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 35 files changed, 72 insertions(+), 3 deletions(-)
+ rewrite tests/test_free_both (60%)
+ rewrite tests/test_free_even (61%)
+ rewrite tests/test_free_right (61%)
+ rewrite tests/test_insert_chunk (60%)
+ rewrite tests/test_large (61%)
+ rewrite tests/test_locks (60%)
+ rewrite tests/test_out_of_ram (60%)
+ rewrite tests/test_simple6 (63%)
+ rewrite tests/test_verify (62%)
+M	.local.git.out
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.
