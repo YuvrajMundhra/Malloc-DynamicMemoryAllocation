@@ -323,9 +323,27 @@ static header * searchFreelist(size_t rounded_raw_size) {
     current_hdr = current_hdr->next;
   }
 
-  //calls function to add chunk
-  header * new_hdr = add_chunk();
-  //remove from free list as well
+  //call new chunk until get the required size
+  size_t blockSize;
+  do {
+    header * added_hdr = add_chunk();
+    size_t blockSize = get_size(added_hdr);
+
+    //checking if size of block equal, more, or less than required
+    if(blockSize - ALLOC_HEADER_SIZE == rounded_raw_size) {
+      //remove from freelist and return header
+      size_t index = get_index(added_hdr);
+      header * freelist = &freelistSentinels[index];
+      removeHeader2param(freelist, added_hdr);
+      return added_hdr;
+    
+    } else if(blockSize - ALLOC_HEADER_SIZE > rounded_raw_size) {
+      //split block
+      header * new_hdr = splitBlock(added_hdr, rounded_raw_size + ALLOC_HEADER_SIZE);
+      return new_hdr;
+    } 
+    //run while loop until the block size is not sufficient
+  } while(blockSize - ALLOC < rounded_raw_size);
 }
 
 
