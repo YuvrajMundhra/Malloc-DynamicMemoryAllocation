@@ -113,7 +113,7 @@ static void insertHeader(header *, size_t);
 static size_t get_index(header *);
 
 //gets another chunk and coalesces
-static header * add_chunk(size_t rounded_raw_size);
+static header * add_chunk(void);
 
 /**
  * @brief Helper function to retrieve a header pointer from a pointer and an 
@@ -325,6 +325,7 @@ static header * searchFreelist(size_t rounded_raw_size) {
 
   //calls function to add chunk
   header * new_hdr = add_chunk(rounded_raw_size);
+  //remove from free list as well
 }
 
 
@@ -389,34 +390,72 @@ static header * splitBlock(header * requiredHdr, size_t actual_required_size) {
 /**
  * @brief Helper function to add chunk and coalesce
  *
- * @param rounded_raw_size
+ * @param void
  *
  * @return header of the block to be used
  */
 
-static header * add_chunk(size_t rounded_raw_size) {
+static header * add_chunk() {
   //requesting new chunk from OS
   header * new_chunk_hdr = allocate_chunk(ARENA_SIZE);
 
-  //inserting the new chunk into the array of chunks
-  header * prevFencePost = get_header_from_offset(new_chunk_hdr, -ALLOC_HEADER_SIZE);
-  insert_os_chunk(prevFencePost);
-
   //updating last fencepost
-  header * prev_chunk_last_fencepost = lastFencePost;
+  header * prev_chunk_fencepost = lastFencePost;
   lastFencePost = get_header_from_offset(new_chunk_hdr, get_size(new_chunk_hdr));
 
-  //coalescing by checking if the chunks are consecutive
-  if(prev_chunk_last_fencepost + ALLOC_HEADER_SIZE == new_chunk_hdr - ALLOC_HEADER_SIZE) {
-    header * prev_chunk_hdr = get_left_header(prev_chunk_last_fencepost);
-
-    //checking if last header of previous chunk is unallocated and setting it's new size
-    size_t new_size;
+  //coalescing depending if the chunks are consecutive 
+  if(prev_chunk_fencepost + ALLOC_HEADER_SIZE == new_chunk_hdr - ALLOC_HEADER_SIZE) {
+    //getting last header of previous chunk
+    header * prev_chunk_hdr = get_left_header(prev_chunk_fencepost);
+    
+    //checking if last header of previous chunk is ALLOCATED
     if(get_state(prev_chunk_hdr) == UNALLOCATED) {
-      new_size = get_size(prev_chunk_hdr) + 2*ALLOC_HEADER_SIZE + get_size(new_chunk_hdr);
+      //getting new and old size and index
+      size_t new_size = get_size(prev_chunk_hdr) + 2*ALLOC_HEADER_SIZE + get_size(new_chunk_hdr);
+      size_t prev_index = get_index(prev_chunk_hdr);
+      set_size(prev_chunk_hdr, new_size);
+      size_t new_index = get_index(prev_chunk_hdr);
+
+      //changing left size of right header
+      header * right_hdr = get_right_header(prev_chunk_hdr);
+      right_hdr->left_size = new_size;
+      
+      //checking if indexes are not same then changing freelist
+      if(prev_index != new_index) {
+        header * freelist = &freelistSentinels[prev_index];
+	removeHdr2param(freelist, prev_chunk_hdr);
+	insertHeader(prev_chunk_hdr, new_index);
+      }
+      
+      //return header
+      return prev_chunk_hdr; 
     } else {
-      new_size = get_size(prev_chunk_hdr); 
+      //creating new header in place of last fencepost of previous chunk
+      void * new_hdr_ptr = get_header_from_offset(new_chunk_hdr, -2*ALLOC_HEADER_SIZE);
+      header * new_hdr = (header *)(char *) new_hdr_ptr;
+      set_state(new_hdr, UNALLOCATED);
+      size_t new_size = get_size(new_chunk_hdr) + 2*ALLOC_HEADER_SIZE;
+      set_size(new_hdr, new_size);
+      new_hdr->left_size = get_size(prev_chunk_hdr);
+
+      //changing right header's left size
+      header * right_hdr = get_right_header(new_hdr);
+      right_hdr->left_size = new_size;
+
+      //inserting new header created into freelist
+      size_t new_index = get_index(new_hdr);
+      insertHeader(new_hdr, new_index);
+
+      //return new header
+      return new_hdr;
     }
+  } else {
+    //if chunks are not consecutive, insert into os_chunk and freelist then return
+    header * prevFencePost = get_header_from_offset(new_chunk_hdr, -ALLOC_HEADER_SIZE);
+    insert_os_chunk(prevFencePost);
+    size_t new_index = get_index(new_chunk_hdr);
+    insertHeader(new_chunk_hdr, new_index);
+    return new_chunk_hdr;
   }
 }
 
