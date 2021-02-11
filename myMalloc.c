@@ -324,7 +324,7 @@ static header * searchFreelist(size_t rounded_raw_size) {
   }
 
   //calls function to add chunk
-  header * new_hdr = add_chunk(rounded_raw_size);
+  header * new_hdr = add_chunk();
   //remove from free list as well
 }
 
@@ -423,7 +423,7 @@ static header * add_chunk() {
       //checking if indexes are not same then changing freelist
       if(prev_index != new_index) {
         header * freelist = &freelistSentinels[prev_index];
-	removeHdr2param(freelist, prev_chunk_hdr);
+	removeHeader2param(freelist, prev_chunk_hdr);
 	insertHeader(prev_chunk_hdr, new_index);
       }
       
