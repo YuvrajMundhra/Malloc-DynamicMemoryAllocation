@@ -491,11 +491,6 @@ static header * add_chunk() {
  */
 
 static void removeHeader(header * freelist) {
-
-  //checking for double free
-  if(freelist->next == freelist) {
-    printf("Double free detected\n");
-  }
   header * deletingHdr = freelist->next;
   
   if(deletingHdr->next == freelist) {
@@ -516,11 +511,6 @@ static void removeHeader(header * freelist) {
  */
 
 static void removeHeader2param(header * freelist, header * deletingHdr) {
-  //checking for double free
-  if(get_state(deletingHdr) == UNALLOCATED) {
-    printf("Double free detected\n");
-  }
-
   if(deletingHdr->next == freelist) {
     freelist->prev = deletingHdr->prev;
     deletingHdr->prev->next = freelist;

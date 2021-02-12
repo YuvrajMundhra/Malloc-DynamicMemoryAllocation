@@ -1686,3 +1686,81 @@ M	tests/test_split
 M	tests/test_verify
 M	tests/test_very_large
 Your branch is up to date with 'origin/master'.
+[master 6ffc8c4] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 35 files changed, 56 insertions(+), 2 deletions(-)
+ rewrite tests/test_all_lists (67%)
+ rewrite tests/test_coalesce_chunk_coalesce (64%)
+ rewrite tests/test_coalesce_chunk_insert (64%)
+ rewrite tests/test_corrupted_canary (80%)
+ rewrite tests/test_double_free (81%)
+ rewrite tests/test_exact (64%)
+ rewrite tests/test_free_both (68%)
+ rewrite tests/test_free_even (66%)
+ rewrite tests/test_free_insert (71%)
+ rewrite tests/test_free_left (73%)
+ rewrite tests/test_free_null (65%)
+ rewrite tests/test_free_odd (67%)
+ rewrite tests/test_free_right (70%)
+ rewrite tests/test_insert_chunk (63%)
+ rewrite tests/test_large (69%)
+ rewrite tests/test_locks (68%)
+ rewrite tests/test_malloc_large (67%)
+ rewrite tests/test_malloc_too_large (65%)
+ rewrite tests/test_multi_malloc (67%)
+ rewrite tests/test_simple0 (60%)
+ rewrite tests/test_simple1 (60%)
+ rewrite tests/test_simple2 (61%)
+ rewrite tests/test_simple3 (64%)
+ rewrite tests/test_simple4 (61%)
+ rewrite tests/test_simple6 (63%)
+ rewrite tests/test_split (71%)
+ rewrite tests/test_verify (66%)
+M	.local.git.out
+M	myMalloc.c
+M	tests/test_all_lists
+M	tests/test_coalesce_chunk_coalesce
+M	tests/test_coalesce_chunk_insert
+M	tests/test_corrupted_canary
+M	tests/test_double_free
+M	tests/test_exact
+M	tests/test_free_both
+M	tests/test_free_even
+M	tests/test_free_insert
+M	tests/test_free_left
+M	tests/test_free_null
+M	tests/test_free_odd
+M	tests/test_free_right
+M	tests/test_insert_chunk
+M	tests/test_large
+M	tests/test_locks
+M	tests/test_malloc_large
+M	tests/test_malloc_too_large
+M	tests/test_malloc_zero
+M	tests/test_multi_malloc
+M	tests/test_out_of_ram
+M	tests/test_random
+M	tests/test_random_sizes
+M	tests/test_simple0
+M	tests/test_simple1
+M	tests/test_simple2
+M	tests/test_simple3
+M	tests/test_simple4
+M	tests/test_simple5
+M	tests/test_simple6
+M	tests/test_split
+M	tests/test_verify
+M	tests/test_very_large
+Your branch is up to date with 'origin/master'.
