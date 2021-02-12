@@ -597,6 +597,7 @@ static inline void deallocate_object(void * p) {
   //checking for double free
   if(get_state(free_header) == UNALLOCATED) {
     printf("Double Free Detected\n");
+    exit(0);
   }
 
   //getting before and after headers
