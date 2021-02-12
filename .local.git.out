@@ -1535,3 +1535,47 @@ M	tests/test_split
 M	tests/test_verify
 M	tests/test_very_large
 Your branch is up to date with 'origin/master'.
+[master f2de96c] Commit
+ Committer: Yuvraj Mundhra <ymundhra@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 35 files changed, 56 insertions(+), 1 deletion(-)
+ rewrite tests/test_all_lists (66%)
+ rewrite tests/test_coalesce_chunk_coalesce (64%)
+ rewrite tests/test_coalesce_chunk_insert (63%)
+ rewrite tests/test_corrupted_canary (67%)
+ rewrite tests/test_double_free (65%)
+ rewrite tests/test_exact (64%)
+ rewrite tests/test_free_both (66%)
+ rewrite tests/test_free_insert (65%)
+ rewrite tests/test_free_left (66%)
+ rewrite tests/test_free_null (66%)
+ rewrite tests/test_free_right (65%)
+ rewrite tests/test_insert_chunk (64%)
+ rewrite tests/test_large (66%)
+ rewrite tests/test_locks (65%)
+ rewrite tests/test_malloc_large (67%)
+ rewrite tests/test_malloc_too_large (65%)
+ rewrite tests/test_malloc_zero (65%)
+ rewrite tests/test_multi_malloc (65%)
+ rewrite tests/test_out_of_ram (64%)
+ rewrite tests/test_simple0 (64%)
+ rewrite tests/test_simple3 (65%)
+ rewrite tests/test_simple4 (66%)
+ rewrite tests/test_simple5 (65%)
+ rewrite tests/test_simple6 (65%)
+ rewrite tests/test_split (66%)
+ rewrite tests/test_verify (67%)
+M	.local.git.out
+M	myMalloc.c
+Your branch is up to date with 'origin/master'.

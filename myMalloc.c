@@ -426,7 +426,7 @@ static header * add_chunk() {
   header * fencepost_from_right = get_header_from_offset(new_chunk_hdr, -ALLOC_HEADER_SIZE);
 
   //coalescing depending if the chunks are consecutive 
-  if(dencepost_from_left == fencepost_from_right) {
+  if(fencepost_from_left == fencepost_from_right) {
     //getting last header of previous chunk
     header * prev_chunk_hdr = get_left_header(prev_chunk_fencepost);
     
