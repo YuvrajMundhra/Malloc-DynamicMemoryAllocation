@@ -495,7 +495,6 @@ static void removeHeader(header * freelist) {
   //checking for double free
   if(freelist->next == freelist) {
     printf("Double free detected\n");
-    assert(0);
   }
   header * deletingHdr = freelist->next;
   
@@ -520,7 +519,6 @@ static void removeHeader2param(header * freelist, header * deletingHdr) {
   //checking for double free
   if(get_state(deletingHdr) == UNALLOCATED) {
     printf("Double free detected\n");
-    assert(0);
   }
 
   if(deletingHdr->next == freelist) {
