@@ -594,6 +594,11 @@ static inline void deallocate_object(void * p) {
   //getting the ptr to header of the block to be freed
   header * free_header = get_header_from_offset(p, -ALLOC_HEADER_SIZE);
 
+  //checking for double free
+  if(get_state(free_header) == UNALLOCATED) {
+    printf("Double Free Detected\n");
+  }
+
   //getting before and after headers
   header * before_header = get_left_header(free_header);
   header * after_header = get_right_header(free_header);
