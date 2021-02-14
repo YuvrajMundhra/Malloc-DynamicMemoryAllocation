@@ -115,6 +115,15 @@ static size_t get_index(header *);
 //gets another chunk and coalesces
 static header * add_chunk(void);
 
+//posix_memalign() - allocates bytes and places the address of the allocate memory in *memptr
+int posix_memalign(void **memptr, size_t alignment, size_t size);
+
+//memalign - allocate size bytes and return a pointer to the allocated memory
+void *memalign(size_t alignment, size_t size);
+
+//valloc - allocates size bytes and returns a pointer to the allocate dmemory
+void * valloc(size_t size);
+
 /**
  * @brief Helper function to retrieve a header pointer from a pointer and an 
  *        offset
@@ -566,6 +575,78 @@ static size_t get_index(header * hdr) {
 }
 
 
+
+/**
+ * @brief allocates size bytes and places the address of the allocated memory in *memptr
+ *
+ * @param *memptr, alignment, size
+ *
+ * @return int 0 on success or error value
+ */
+
+int posix_memalign(void **memptr, size_t alignment, size_t size) {
+  //return EINVAL
+  int q = 0, r = 0;
+  size_t tempAlignment = alignment;
+  while(r != 0) {
+    r = tempAlignment%2;
+    tempAlignment = tempAlignment/2;
+  }
+  if(r != 1 || tempAlignment != 1) {
+    return EINVAL;
+  }
+
+  if(alignment%sizeof(void *) != 0) {
+    return EINVAL;
+  }
+
+  //ENOMEM
+
+
+  if(size == 0) {
+    return NULL;
+  }
+
+  *memptr = (void *) allocate_object(size);
+  if(*memptr == NULL) {
+    return ENOMEM;
+  }
+
+}
+
+
+/**
+ * @brief function to allocate size bytes and return a pointer to the allocated memory
+ *
+ * @param size, alignment
+ *
+ * @return pointer to the allocated memory
+ */
+
+void * memalign(size_t alignment, size_t size) {
+  int q = 0, r = 0;
+  size_t tempAlignment = alignment;
+  while(r != 0) {
+  r = tempAlignment%2;
+  tempAlignment = tempAlignment/2;
+  }
+  if(r != 1 || tempAlignment != 1) {
+    return NULL;
+  }
+
+  void *memptr = (void *) allocate_object;
+  if(memptr == NULL) {
+    return NULL;
+  }
+
+  return memptr;
+}
+
+
+void * valloc(size_t size) {
+  void * memptr = (void *)allocate_object(size);
+  return memptr;
+}
 /**
  * @brief Helper to get the header from a pointer allocated with malloc
  *
@@ -843,25 +924,29 @@ static void init() {
 /* 
  * External interface
  */
-void * my_malloc(size_t size) {
+void * malloc(size_t size) {
   pthread_mutex_lock(&mutex);
+  if(!isMallocInitialized) {
+    isMallocInitialized = 1;
+    init();
+  }
   header * hdr = allocate_object(size); 
   pthread_mutex_unlock(&mutex);
   return hdr;
 }
 
-void * my_calloc(size_t nmemb, size_t size) {
-  return memset(my_malloc(size * nmemb), 0, size * nmemb);
+void * calloc(size_t nmemb, size_t size) {
+  return memset(malloc(size * nmemb), 0, size * nmemb);
 }
 
-void * my_realloc(void * ptr, size_t size) {
-  void * mem = my_malloc(size);
+void * realloc(void * ptr, size_t size) {
+  void * mem = malloc(size);
   memcpy(mem, ptr, size);
-  my_free(ptr);
+  free(ptr);
   return mem; 
 }
 
-void my_free(void * p) {
+void free(void * p) {
   pthread_mutex_lock(&mutex);
   deallocate_object(p);
   pthread_mutex_unlock(&mutex);

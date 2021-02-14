@@ -108,10 +108,10 @@ static inline void set_size_and_state(header * h, size_t size, enum state s) {
 #define MAX_OS_CHUNKS 1024
 
 // Malloc interface
-void * my_malloc(size_t size);
-void * my_calloc(size_t nmemb, size_t size);
-void * my_realloc(void * ptr, size_t size);
-void my_free(void * p);
+void * malloc(size_t size);
+void * calloc(size_t nmemb, size_t size);
+void * realloc(void * ptr, size_t size);
+void free(void * p);
 
 // Debug list verifitcation
 bool verify();
